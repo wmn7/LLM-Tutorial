@@ -1,7 +1,7 @@
 '''
 Author: Maonan Wang
 Date: 2025-04-07 16:13:53
-LastEditTime: 2025-04-07 19:46:08
+LastEditTime: 2025-04-07 19:58:24
 LastEditors: Maonan Wang
 Description: 本地部署 vLLM 后使用图片对话
 FilePath: /llm_tutorial/LangChain-Tutorial/1_openai_api/d_openai_vllm_image.py
@@ -27,7 +27,7 @@ def ask_image_question(client, image_path, question):
                     {
                         "type": "image_url",
                         "image_url": {
-                            "url": f"data:image/jpeg;base64,{base64_image}"
+                            "url": f"data:image/png;base64,{base64_image}"
                         }
                     },
                     {
