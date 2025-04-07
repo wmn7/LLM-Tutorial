@@ -1,10 +1,10 @@
 '''
 Author: Maonan Wang
 Date: 2025-04-07 16:13:53
-LastEditTime: 2025-04-07 16:37:28
+LastEditTime: 2025-04-07 19:46:08
 LastEditors: Maonan Wang
 Description: 本地部署 vLLM 后使用图片对话
-FilePath: /llm_tutorial/LangChain-Tutorial/1_openai_api/c_openai_vllm_image.py
+FilePath: /llm_tutorial/LangChain-Tutorial/1_openai_api/d_openai_vllm_image.py
 '''
 import base64
 from openai import OpenAI
@@ -49,7 +49,7 @@ client = OpenAI(
 
 
 # Image
-image_path = "/home/wmn/Github-Project/llm_tutorial/LangChain-Tutorial/1_openai_api/road_sim.png"
+image_path = "../../assets/road_sim.png"
 question = "是否可以告诉我道路上有多少车辆，是否存在特殊的车辆?"
 
 answer = ask_image_question(client, image_path, question)
