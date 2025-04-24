@@ -1,7 +1,7 @@
 '''
 Author: Maonan Wang
 Date: 2025-04-09 10:43:14
-LastEditTime: 2025-04-10 15:00:11
+LastEditTime: 2025-04-23 18:21:34
 LastEditors: Maonan Wang
 Description: 基于图片聊天机器人
 FilePath: /llm_tutorial/QwenAgent-Tutorial/3_chatbot_image.py
@@ -11,9 +11,9 @@ from qwen_agent.agents import Assistant
 from qwen_agent.utils.output_beautify import typewriter_print
 
 llm_cfg = {
-    'model': 'Qwen/Qwen2.5-VL-32B-Instruct',
+    'model': 'Qwen/Qwen2.5-VL-32B-Instruct-AWQ',
     'model_type': 'qwenvl_oai',
-    'model_server': 'http://localhost:5003/v1',
+    'model_server': 'http://localhost:5030/v1',
     'api_key': 'token-abc123',
 
     # 模型配置参数
@@ -22,9 +22,10 @@ llm_cfg = {
     }
 }
 
+
 bot = Assistant(
     llm=llm_cfg,
-    # system_message="你现在是一个图片描述机器人，给你一个图片，请你描述图片中的内容。",
+    system_message="你现在是一个图片描述机器人，给你一个图片，请你描述图片中的内容。",
 )
 
 messages = [] # This stores the chat history.
