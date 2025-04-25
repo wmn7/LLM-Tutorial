@@ -1,7 +1,7 @@
 '''
 Author: Maonan Wang
 Date: 2025-04-10 15:11:43
-LastEditTime: 2025-04-25 17:56:16
+LastEditTime: 2025-04-25 19:00:17
 LastEditors: Maonan Wang
 Description: 两个 Agent 按照顺序执行. (1) 第一个 agent 理解图片; (2) 第二个 agent 根据场景判断做的内容
 FilePath: /llm_tutorial/QwenAgent-Tutorial/6_sequence_agents.py
