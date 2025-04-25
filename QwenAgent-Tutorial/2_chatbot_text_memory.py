@@ -1,39 +1,14 @@
 '''
 Author: Maonan Wang
 Date: 2025-04-10 14:48:54
-LastEditTime: 2025-04-10 14:55:13
+LastEditTime: 2025-04-25 17:13:07
 LastEditors: Maonan Wang
 Description: 聊天机器人, 只有 3 轮的记忆, 下面是一个例子
-
-```
-Input: user query: 你好,我的名字是xxx,希望你可以记住
-Output: bot response: 你好，xxx！很高兴认识你，我会记住你的名字的。有什么我可以帮你的吗？😊
-Input: user query: 告诉我1+10 的结果
-Output: bot response: 1 + 10 = **11** 😊
-Input: user query: 告诉我2*9的结果
-Output: bot response: 2 × 9 = **18** 😊
-Input: user query: 告诉我 10*10 的结果
-Output: bot response: 10 × 10 = **100** 😊
-Input: user query: 我的名字叫什么
-Output: bot response: 你好呀！你没有告诉我你的名字呢，可以和我分享一下吗？😊
-```
-
-FilePath: /llm_tutorial/QwenAgent-Tutorial/2_chatbot_text_without_memory.py
+FilePath: /llm_tutorial/QwenAgent-Tutorial/2_chatbot_text_memory.py
 '''
 from qwen_agent.agents import Assistant
 from qwen_agent.utils.output_beautify import typewriter_print
-
-
-llm_cfg = {
-    'model': 'Qwen/Qwen2.5-VL-32B-Instruct',
-    'model_server': 'http://localhost:5003/v1',
-    'api_key': 'token-abc123',
-
-    # 模型配置参数
-    'generate_cfg': {
-        'top_p': 0.8,
-    }
-}
+from _config import llm_cfg
 
 bot = Assistant(
     llm=llm_cfg,

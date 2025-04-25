@@ -1,15 +1,15 @@
 '''
 Author: Maonan Wang
 Date: 2025-04-24 20:16:50
-LastEditTime: 2025-04-24 20:16:52
+LastEditTime: 2025-04-25 16:54:38
 LastEditors: Maonan Wang
 Description: LLM 服务配置
 FilePath: /llm_tutorial/QwenAgent-Tutorial/_config.py
 '''
 llm_cfg = {
-    'model': 'Qwen/Qwen2.5-7B-Instruct',
+    'model': 'Qwen/Qwen2.5-72B-Instruct-AWQ',
     'model_type': 'oai',
-    'model_server': 'http://localhost:5010/v1',
+    'model_server': 'http://localhost:5060/v1',
     'api_key': 'token-abc123',
 
     'generate_cfg': {
