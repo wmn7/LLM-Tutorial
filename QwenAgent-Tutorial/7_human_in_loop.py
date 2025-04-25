@@ -1,10 +1,10 @@
 '''
 Author: Maonan Wang
 Date: 2025-04-10 16:36:30
-LastEditTime: 2025-04-10 18:10:52
+LastEditTime: 2025-04-25 18:01:35
 LastEditors: Maonan Wang
 Description: 加入一个人类参与的 Agents
-FilePath: /llm_tutorial/QwenAgent-Tutorial/5_human_in_loop.py
+FilePath: /llm_tutorial/QwenAgent-Tutorial/7_human_in_loop.py
 '''
 import copy
 from typing import Dict, Iterator, List, Optional, Union
@@ -15,29 +15,7 @@ from qwen_agent.tools import BaseTool
 from qwen_agent.tools.base import BaseTool, register_tool
 from qwen_agent.llm.schema import ContentItem, Message
 from qwen_agent.utils.output_beautify import typewriter_print
-
-llm_cfg = {
-    'model': 'Qwen/Qwen2.5-7B-Instruct',
-    'model_type': 'oai',
-    'model_server': 'http://localhost:5010/v1',
-    'api_key': 'token-abc123',
-
-    'generate_cfg': {
-        'top_p': 0.8,
-    }
-}
-
-vlm_cfg = {
-    'model': 'Qwen/Qwen2.5-VL-7B-Instruct-AWQ',
-    'model_type': 'qwenvl_oai',
-    'model_server': 'http://localhost:5003/v1',
-    'api_key': 'token-abc123',
-
-    'generate_cfg': {
-        'top_p': 0.8,
-    }
-}
-
+from _config import llm_cfg, vlm_cfg
 
 @register_tool('tsc_expert_decision')
 class ExpertDecisionTool(BaseTool):
@@ -51,7 +29,6 @@ class HumanInLoop(BaseTool):
     def call(self, params: str, **kwargs) -> int:
         message = input("人工的建议: ")
         return message
-
 
 
 class TSCDecision(Agent):
@@ -76,9 +53,9 @@ class TSCDecision(Agent):
             llm=llm_cfg,
             function_list=function_list,
             system_message='你扮演一个在路口指挥交通的警察，根据当前路口情况进行决策。' + \
-                '如果当前路口没有特殊情况，则参考专家的建议，也就是 tsc_expert_decision；' + \
-                '如果存在特殊车辆，则应该返回对应的车道编号。'
-        )
+                '如果当前路口没有特殊情况，则参考专家的建议，也就是工具 tsc_expert_decision；' + \
+                '如果存在特殊车辆，则应该希望人工介入，也就是调用工具 human_in_loop。'
+            )
 
 
     def _run(self, messages: List[Message], lang: str = 'zh', **kwargs) -> Iterator[List[Message]]:
