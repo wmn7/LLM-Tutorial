@@ -1,32 +1,24 @@
 '''
 Author: Maonan Wang
 Date: 2025-04-09 10:42:48
-LastEditTime: 2025-04-10 14:49:34
+LastEditTime: 2025-04-25 17:07:48
 LastEditors: Maonan Wang
-Description: 基于文本的聊天机器人 (有上下文的记忆)
+Description: 基于文本的聊天机器人 (没有记忆)
 FilePath: /llm_tutorial/QwenAgent-Tutorial/1_chatbot_text.py
 '''
 from qwen_agent.agents import Assistant
 from qwen_agent.utils.output_beautify import typewriter_print
 
-llm_cfg = {
-    'model': 'Qwen/Qwen2.5-VL-32B-Instruct',
-    'model_server': 'http://localhost:5003/v1',
-    'api_key': 'token-abc123',
-
-    # 模型配置参数
-    'generate_cfg': {
-        'top_p': 0.8,
-    }
-}
+from _config import llm_cfg
 
 bot = Assistant(
     llm=llm_cfg,
     system_message="现在你是一个聊天机器人，请你使用简短的语言进行聊天。",
 )
 
-messages = []  # This stores the chat history.
+
 while True:
+    messages = []  # This stores the chat history.
     query = input('\nuser query: ') # 输入问题
     # Append the user query to the chat history.
     messages.append({'role': 'user', 'content': query})
@@ -35,5 +27,3 @@ while True:
     print('bot response:')
     for response in bot.run(messages=messages):
         response_plain_text = typewriter_print(response, response_plain_text)
-    # Append the bot responses to the chat history.
-    messages.extend(response) # 添加聊天历史
