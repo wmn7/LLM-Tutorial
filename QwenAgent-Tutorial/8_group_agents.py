@@ -1,7 +1,7 @@
 '''
 Author: Maonan Wang
 Date: 2025-04-25 18:47:57
-LastEditTime: 2025-04-25 20:22:01
+LastEditTime: 2025-04-28 14:29:55
 LastEditors: Maonan Wang
 Description: 存在一个 Host Agent 分配任务:
 + 存在一个 Agent 作图片理解
@@ -9,7 +9,6 @@ Description: 存在一个 Host Agent 分配任务:
 + 如果不存在特殊车辆, 则返回专家决策 (这里返回的结果是固定值)
 FilePath: /llm_tutorial/QwenAgent-Tutorial/8_group_agents.py
 '''
-import os
 from qwen_agent import Agent
 from qwen_agent.agents import Assistant
 from qwen_agent.agents import GroupChat
